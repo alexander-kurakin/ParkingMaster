@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -9,8 +9,8 @@ public class BuyCar : MonoBehaviour {
 	public Text coins, carName;
 
 	void OnMouseUp(){
-		if (PlayerPrefs.GetInt ("Coins") < 100) {
-			Debug.Log("You can't buy this."+ "You need to collect " + (100 - PlayerPrefs.GetInt ("Coins")) + " more coins to buy this car.");
+		if (CloudVariables.Coins < 100) {
+			Debug.Log("You can't buy this."+ "You need to collect " + (100 - CloudVariables.Coins) + " more coins to buy this car.");
         
 			if (PlayerPrefs.GetString ("Music") != "off") {
 				transform.GetChild (0).GetComponent<AudioSource> ().Play ();
@@ -18,10 +18,11 @@ public class BuyCar : MonoBehaviour {
 		} else {
 			PlayerPrefs.SetString ("Current car", carName.text);
 			PlayerPrefs.SetString (carName.text, "Unlocked");
-			PlayerPrefs.SetInt ("Coins", PlayerPrefs.GetInt ("Coins") - 100);
-			GameObject.Find (carName.text).GetComponent<Animation> ().Play ();
-			coins.text = PlayerPrefs.GetInt ("Coins").ToString();
-			if (PlayerPrefs.GetString ("Music") != "off") {
+            CloudVariables.Coins = CloudVariables.Coins - 100;
+            GameObject.Find (carName.text).GetComponent<Animation> ().Play ();
+            coins.text = CloudVariables.Coins.ToString();
+            LoginGoogle.Instance.SaveData2();
+            if (PlayerPrefs.GetString ("Music") != "off") {
 				Instantiate (buyCarAudio, new Vector3 (0, 0, 0), Quaternion.identity);
 			}
 			selectBtn.SetActive (true);

@@ -57,6 +57,7 @@ public class LoginGoogle : MonoBehaviour {
             Debug.Log("Signed in as: " + Social.localUser.userName);
             LoadData();
             LoadData2();
+            coinsText.text = CloudVariables.Coins.ToString();
         }
         else
         {
