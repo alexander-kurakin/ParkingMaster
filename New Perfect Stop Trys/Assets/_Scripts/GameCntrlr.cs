@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using GooglePlayGames;
@@ -30,6 +30,8 @@ public class GameCntrlr : MonoBehaviour {
     void Start() {
 		inTurn = false;
 		Application.targetFrameRate = 60;
+
+        bestScore.text = "BEST: "+ CloudVariables.HighScore.ToString();
 
 		for (int i = 0; i < car.Length; i++) {
 			if (car[i].name == PlayerPrefs.GetString ("Current car")){
@@ -127,9 +129,10 @@ public class GameCntrlr : MonoBehaviour {
 
 			countCars++;
 			score.text = countCars.ToString (); 
-			if (PlayerPrefs.GetInt("Score") < countCars){
-				PlayerPrefs.SetInt ("Score", countCars);
-				bestScore.text = "Best: " + countCars.ToString ();
+			if (CloudVariables.HighScore < countCars){
+                CloudVariables.HighScore = countCars;
+                bestScore.text = "Best: " + CloudVariables.HighScore.ToString();
+                LoginGoogle.Instance.SaveData();
 			}
 
             if (countCars == 1)
