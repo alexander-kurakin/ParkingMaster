@@ -9,7 +9,10 @@ public class LoginGoogle : MonoBehaviour {
 
     public static LoginGoogle Instance { get; private set; }
 
+    public Text coinsText;
+
     const string SAVE_NAME = "Score";
+    const string SAVE_NAME2 = "Coins";
     bool isSaving;
     bool isCloudDataLoaded = false;
 
@@ -18,22 +21,19 @@ public class LoginGoogle : MonoBehaviour {
 
         Instance = this;
 
-        //clearTST
-        //CloudVariables.HighScore = 0;
-        //PlayerPrefs.SetString(SAVE_NAME, "0");
-
         if (!PlayerPrefs.HasKey(SAVE_NAME))
             PlayerPrefs.SetString(SAVE_NAME, "0");
+
+        if (!PlayerPrefs.HasKey(SAVE_NAME2))
+            PlayerPrefs.SetString(SAVE_NAME2, "0");
 
         if (!PlayerPrefs.HasKey("IsFirstTime"))
             PlayerPrefs.SetInt("IsFirstTime", 1);
 
-        Debug.Log(int.Parse(PlayerPrefs.GetString(SAVE_NAME)));
-        Debug.Log(CloudVariables.HighScore);
-
         LoadLocal();
-        Debug.Log(int.Parse(PlayerPrefs.GetString(SAVE_NAME)));
-        Debug.Log(CloudVariables.HighScore);
+        LoadLocal2();
+
+        coinsText.text = CloudVariables.Coins.ToString();
 
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
         PlayGamesPlatform.DebugLogEnabled = true;
@@ -48,7 +48,6 @@ public class LoginGoogle : MonoBehaviour {
         if (Social.localUser.authenticated)
             WriteResult(CloudVariables.HighScore);
 
-
     }
 
     private void SignInCallBack(bool success)
@@ -57,6 +56,7 @@ public class LoginGoogle : MonoBehaviour {
         {
             Debug.Log("Signed in as: " + Social.localUser.userName);
             LoadData();
+            LoadData2();
         }
         else
         {
@@ -257,5 +257,173 @@ public class LoginGoogle : MonoBehaviour {
     }
 
     #endregion /Saved Games
+    #region Saved Games2
+    string GameDataToString2()
+    {
+        return CloudVariables.Coins.ToString();
+    }
+
+    void StringToGameData2(string cloudData, string localData)
+    {
+        if (PlayerPrefs.GetInt("IsFirstTime") == 1)
+        {
+            PlayerPrefs.SetInt("IsFirstTime", 0);
+            if (int.Parse(cloudData) > int.Parse(localData))
+            {
+                PlayerPrefs.SetString(SAVE_NAME2, cloudData);
+            }
+        }
+        else
+        {
+            if (int.Parse(localData) > int.Parse(cloudData))
+            {
+                CloudVariables.Coins = int.Parse(localData);
+                isCloudDataLoaded = true;
+                SaveData2();
+                return;
+            }
+        }
+        CloudVariables.Coins = int.Parse(cloudData);
+        isCloudDataLoaded = true;
+    }
+
+    void StringToGameData2(string localData)
+    {
+        CloudVariables.Coins = int.Parse(localData);
+    }
+
+    public void LoadData2()
+    {
+        if (Social.localUser.authenticated)
+        {
+            isSaving = false;
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadCacheOrNetwork, true, ResolveConflict2, OnSavedGameOpened2);
+        }
+        else
+        {
+            LoadLocal2();
+        }
+    }
+
+    private void LoadLocal2()
+    {
+        StringToGameData2(PlayerPrefs.GetString(SAVE_NAME2));
+    }
+
+    public void SaveData2()
+    {
+        if (!isCloudDataLoaded)
+        {
+            SaveLocal2();
+            return;
+        }
+
+        if (Social.localUser.authenticated)
+        {
+            isSaving = true;
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadCacheOrNetwork, true, ResolveConflict2, OnSavedGameOpened2);
+        }
+        else
+        {
+            SaveLocal2();
+        }
+    }
+
+    private void SaveLocal2()
+    {
+        PlayerPrefs.SetString(SAVE_NAME2, GameDataToString2());
+    }
+
+    private void ResolveConflict2(IConflictResolver resolver, ISavedGameMetadata original, byte[] originalData, ISavedGameMetadata unmerged, byte[] unmergedData)
+    {
+        if (originalData == null)
+            resolver.ChooseMetadata(unmerged);
+        else if (unmergedData == null)
+            resolver.ChooseMetadata(original);
+        else
+        {
+            string originalStr = Encoding.ASCII.GetString(originalData);
+            string unmergedStr = Encoding.ASCII.GetString(unmergedData);
+
+            int originalNum = int.Parse(originalStr);
+            int unmergedNum = int.Parse(unmergedStr);
+
+            if (originalNum > unmergedNum)
+            {
+                resolver.ChooseMetadata(original);
+                return;
+            }
+            else if (unmergedNum > originalNum)
+            {
+                resolver.ChooseMetadata(unmerged);
+            }
+            resolver.ChooseMetadata(original);
+        }
+    }
+
+    private void OnSavedGameOpened2(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            if (!isSaving)
+                LoadGame2(game);
+            else
+                SaveGame2(game);
+
+        }
+        else
+        {
+            if (!isSaving)
+                LoadLocal2();
+            else
+                SaveLocal2();
+        }
+    }
+
+    private void LoadGame2(ISavedGameMetadata game)
+    {
+        ((PlayGamesPlatform)Social.Active).SavedGame.ReadBinaryData(game, OnSavedGameDataRead2);
+    }
+
+    private void SaveGame2(ISavedGameMetadata game)
+    {
+        string stringToSave = GameDataToString2();
+        SaveLocal2();
+        byte[] dataToSave = Encoding.ASCII.GetBytes(stringToSave);
+
+        SavedGameMetadataUpdate update = new SavedGameMetadataUpdate.Builder().Build();
+
+        ((PlayGamesPlatform)Social.Active).SavedGame.CommitUpdate(game, update, dataToSave, OnSavedGameDataWritten2);
+    }
+
+    private void OnSavedGameDataRead2(SavedGameRequestStatus status, byte[] savedData)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            string cloudDataString;
+            if (savedData.Length == 0)
+                cloudDataString = "0";
+            else
+                cloudDataString = Encoding.ASCII.GetString(savedData);
+
+            string localDataString = PlayerPrefs.GetString(SAVE_NAME2);
+
+            StringToGameData2(cloudDataString, localDataString);
+        }
+    }
+
+    private void OnSavedGameDataWritten2(SavedGameRequestStatus status, ISavedGameMetadata game)
+    {
+        if (status == SavedGameRequestStatus.Success)
+        {
+            Debug.Log("Success!");
+        }
+        else
+        {
+            Debug.Log("Fail!");
+        }
+    }
+
+    #endregion /Saved Games2
 
 }

@@ -31,7 +31,11 @@ public class GameCntrlr : MonoBehaviour {
 		inTurn = false;
 		Application.targetFrameRate = 60;
 
+        Debug.Log(CloudVariables.Coins.ToString());
+        Debug.Log(PlayerPrefs.GetString("Coins"));
+
         bestScore.text = "BEST: "+ CloudVariables.HighScore.ToString();
+        coins.text = CloudVariables.Coins.ToString();
 
 		for (int i = 0; i < car.Length; i++) {
 			if (car[i].name == PlayerPrefs.GetString ("Current car")){
@@ -198,12 +202,13 @@ public class GameCntrlr : MonoBehaviour {
             }
 
             if (countCars % 3 == 0) {
-                PlayerPrefs.SetInt ("Coins", PlayerPrefs.GetInt ("Coins") + 1*multiplier);
-				coins.text = PlayerPrefs.GetInt ("Coins").ToString ();
+                CloudVariables.Coins = (CloudVariables.Coins + 1 * multiplier);
+                coins.text = CloudVariables.Coins.ToString();
 				if (PlayerPrefs.GetString ("Music") != "off") 
 					Instantiate (collectCoin, new Vector3 (0, 0, 0), Quaternion.identity);
-                    
-			}
+                LoginGoogle.Instance.SaveData2();
+
+            }
 
             carInst = Instantiate(carNow, new Vector3(5.98f, -0.41f, -9.9f), Quaternion.Euler(0, 270, 0)) as GameObject;
 			MoveObjects.speed = Random.Range (25f, 44f);
