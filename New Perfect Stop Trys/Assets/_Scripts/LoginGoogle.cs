@@ -15,6 +15,8 @@ public class LoginGoogle : MonoBehaviour {
     const string SAVE_NAME2 = "Coins";
     bool isSaving;
     bool isCloudDataLoaded = false;
+    bool isSaving2;
+    bool isCloudDataLoaded2 = false;
 
     // Use this for initialization
     void Start() {
@@ -31,9 +33,11 @@ public class LoginGoogle : MonoBehaviour {
             PlayerPrefs.SetInt("IsFirstTime", 1);
 
         LoadLocal();
+        Debug.Log("local HS:"+ PlayerPrefs.GetString(SAVE_NAME));
+        Debug.Log("cloud HS:"+ CloudVariables.HighScore.ToString());
         LoadLocal2();
-
-        coinsText.text = CloudVariables.Coins.ToString();
+        Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
+        Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
 
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
         PlayGamesPlatform.DebugLogEnabled = true;
@@ -57,11 +61,16 @@ public class LoginGoogle : MonoBehaviour {
             Debug.Log("Signed in as: " + Social.localUser.userName);
             LoadData();
             LoadData2();
-            coinsText.text = CloudVariables.Coins.ToString();
+            Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
+            Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
         }
         else
         {
             Debug.Log("Not signed in");
+            LoadData();
+            LoadData2();
+            Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
+            Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
 
         }
     }
@@ -85,7 +94,7 @@ public class LoginGoogle : MonoBehaviour {
                 GPGSIds.leaderboard_top_parked_cars,
                 (bool success) =>
                 {
-                    Debug.Log("Success!");
+                    Debug.Log("Score Reported");
                 });
         }
     }
@@ -130,7 +139,7 @@ public class LoginGoogle : MonoBehaviour {
         if (Social.localUser.authenticated)
         {
             isSaving = false;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME, DataSource.ReadCacheOrNetwork, true, ResolveConflict, OnSavedGameOpened);
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME, DataSource.ReadNetworkOnly, true, ResolveConflict, OnSavedGameOpened);
         }
         else
         {
@@ -154,7 +163,7 @@ public class LoginGoogle : MonoBehaviour {
         if (Social.localUser.authenticated)
         {
             isSaving = true;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME, DataSource.ReadCacheOrNetwork, true, ResolveConflict, OnSavedGameOpened);
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME, DataSource.ReadNetworkOnly, true, ResolveConflict, OnSavedGameOpened);
         }
         else
         {
@@ -249,7 +258,7 @@ public class LoginGoogle : MonoBehaviour {
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            Debug.Log("Success!");
+            Debug.Log("Saved HighScore!");
         }
         else
         {
@@ -279,13 +288,13 @@ public class LoginGoogle : MonoBehaviour {
             if (int.Parse(localData) > int.Parse(cloudData))
             {
                 CloudVariables.Coins = int.Parse(localData);
-                isCloudDataLoaded = true;
+                isCloudDataLoaded2 = true;
                 SaveData2();
                 return;
             }
         }
         CloudVariables.Coins = int.Parse(cloudData);
-        isCloudDataLoaded = true;
+        isCloudDataLoaded2 = true;
     }
 
     void StringToGameData2(string localData)
@@ -297,8 +306,8 @@ public class LoginGoogle : MonoBehaviour {
     {
         if (Social.localUser.authenticated)
         {
-            isSaving = false;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadCacheOrNetwork, true, ResolveConflict2, OnSavedGameOpened2);
+            isSaving2 = false;
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadNetworkOnly, true, ResolveConflict2, OnSavedGameOpened2);
         }
         else
         {
@@ -313,7 +322,7 @@ public class LoginGoogle : MonoBehaviour {
 
     public void SaveData2()
     {
-        if (!isCloudDataLoaded)
+        if (!isCloudDataLoaded2)
         {
             SaveLocal2();
             return;
@@ -321,8 +330,8 @@ public class LoginGoogle : MonoBehaviour {
 
         if (Social.localUser.authenticated)
         {
-            isSaving = true;
-            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadCacheOrNetwork, true, ResolveConflict2, OnSavedGameOpened2);
+            isSaving2 = true;
+            ((PlayGamesPlatform)Social.Active).SavedGame.OpenWithManualConflictResolution(SAVE_NAME2, DataSource.ReadNetworkOnly, true, ResolveConflict2, OnSavedGameOpened2);
         }
         else
         {
@@ -366,7 +375,7 @@ public class LoginGoogle : MonoBehaviour {
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            if (!isSaving)
+            if (!isSaving2)
                 LoadGame2(game);
             else
                 SaveGame2(game);
@@ -374,7 +383,7 @@ public class LoginGoogle : MonoBehaviour {
         }
         else
         {
-            if (!isSaving)
+            if (!isSaving2)
                 LoadLocal2();
             else
                 SaveLocal2();
@@ -417,7 +426,7 @@ public class LoginGoogle : MonoBehaviour {
     {
         if (status == SavedGameRequestStatus.Success)
         {
-            Debug.Log("Success!");
+            Debug.Log("Saved COINS!");
         }
         else
         {

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -8,14 +8,14 @@ public class NeedCoins : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefs.GetInt ("Coins") >= 100) {
+		if (CloudVariables.Coins >= 100) {
 			transform.GetChild (0).gameObject.SetActive (false);
-            needMore.text = "You are damn rich! You have " + PlayerPrefs.GetInt("Coins").ToString();
+            needMore.text = "You are damn rich! You have " + CloudVariables.Coins.ToString();
         } else {
 			transform.GetChild (1).gameObject.SetActive (true);
 			transform.GetChild (0).gameObject.SetActive (true);
 
-			needMore.text = "You need " + (100 - PlayerPrefs.GetInt("Coins")).ToString() +" more";
+			needMore.text = "You need " + (100 - CloudVariables.Coins) + " more";
 		}
 	}
 	

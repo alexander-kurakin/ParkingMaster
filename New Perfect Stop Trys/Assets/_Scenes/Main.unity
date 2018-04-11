@@ -9916,6 +9916,7 @@ GameObject:
   - component: {fileID: 1783106780}
   - component: {fileID: 1783106782}
   - component: {fileID: 1783106781}
+  - component: {fileID: 1783106783}
   m_Layer: 5
   m_Name: Coin
   m_TagString: Untagged
@@ -9974,6 +9975,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1783106779}
+--- !u!114 &1783106783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1783106779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7d7cce718d1164a9f383b78589d7e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 2053965457}
 --- !u!1001 &1786599628
 Prefab:
   m_ObjectHideFlags: 0
