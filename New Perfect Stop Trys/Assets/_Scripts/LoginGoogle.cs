@@ -248,7 +248,12 @@ public class LoginGoogle : MonoBehaviour {
             else 
                 cloudDataString = Encoding.ASCII.GetString(savedData);
 
+            if (cloudDataString.EndsWith("?"))
+                cloudDataString = "0";
+
             string localDataString = PlayerPrefs.GetString(SAVE_NAME);
+
+            Debug.Log("cloudSTR="+cloudDataString+" , localSTR="+localDataString);
 
             StringToGameData(cloudDataString, localDataString);
         }
@@ -416,7 +421,12 @@ public class LoginGoogle : MonoBehaviour {
             else
                 cloudDataString = Encoding.ASCII.GetString(savedData);
 
+            if (cloudDataString.EndsWith("?"))
+                cloudDataString = "0";
+
             string localDataString = PlayerPrefs.GetString(SAVE_NAME2);
+
+            Debug.Log("cloudSTR2=" + cloudDataString + " , localSTR2=" + localDataString);
 
             StringToGameData2(cloudDataString, localDataString);
         }
