@@ -249,7 +249,7 @@ PlayerSettings:
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/tstdownload/cargame.keystore
+  AndroidKeystoreName: E:/cargame.keystore
   AndroidKeyaliasName: parking master
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
