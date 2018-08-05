@@ -82,7 +82,7 @@ public class LoginGoogle : MonoBehaviour {
 
     public void ShowLeaderboard()
     {
-        ((PlayGamesPlatform)Social.Active).ShowLeaderboardUI(GPGSIds.leaderboard_top_parked_cars);
+        PlayGamesPlatform.Instance.ShowLeaderboardUI(GPGSIds.leaderboard_top_parked_cars);
     }
 
     public void WriteResult(int score)
