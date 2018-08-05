@@ -33,11 +33,7 @@ public class LoginGoogle : MonoBehaviour {
             PlayerPrefs.SetInt("IsFirstTime", 1);
 
         LoadLocal();
-        Debug.Log("local HS:"+ PlayerPrefs.GetString(SAVE_NAME));
-        Debug.Log("cloud HS:"+ CloudVariables.HighScore.ToString());
         LoadLocal2();
-        Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
-        Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
 
         PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder().EnableSavedGames().Build();
         PlayGamesPlatform.DebugLogEnabled = true;
@@ -61,16 +57,12 @@ public class LoginGoogle : MonoBehaviour {
             Debug.Log("Signed in as: " + Social.localUser.userName);
             LoadData();
             LoadData2();
-            Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
-            Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
         }
         else
         {
             Debug.Log("Not signed in");
             LoadData();
             LoadData2();
-            Debug.Log("local coins:" + PlayerPrefs.GetString(SAVE_NAME2));
-            Debug.Log("cloud coins:" + CloudVariables.Coins.ToString());
 
         }
     }
@@ -248,7 +240,7 @@ public class LoginGoogle : MonoBehaviour {
             else 
                 cloudDataString = Encoding.ASCII.GetString(savedData);
 
-            if (cloudDataString.EndsWith("?"))
+            if (cloudDataString.IndexOf("?") >= 0)
                 cloudDataString = "0";
 
             string localDataString = PlayerPrefs.GetString(SAVE_NAME);
@@ -421,7 +413,7 @@ public class LoginGoogle : MonoBehaviour {
             else
                 cloudDataString = Encoding.ASCII.GetString(savedData);
 
-            if (cloudDataString.EndsWith("?"))
+            if (cloudDataString.IndexOf("?")>=0)
                 cloudDataString = "0";
 
             string localDataString = PlayerPrefs.GetString(SAVE_NAME2);
@@ -445,5 +437,6 @@ public class LoginGoogle : MonoBehaviour {
     }
 
     #endregion /Saved Games2
-
+    #region SavedGamesSTR
+    #endregion /SavedGamesSTR
 }

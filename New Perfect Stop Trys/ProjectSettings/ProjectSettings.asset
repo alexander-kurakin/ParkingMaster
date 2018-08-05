@@ -247,7 +247,11 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
+<<<<<<< HEAD
   AndroidKeystoreName: O:/Sashina_papka/Unity Projects/builds/cargame.keystore
+=======
+  AndroidKeystoreName: E:/cargame.keystore
+>>>>>>> 5555fb90e910519b108b57f6476792ce834942de
   AndroidKeyaliasName: parking master
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
