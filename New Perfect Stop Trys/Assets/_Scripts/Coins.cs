@@ -7,8 +7,13 @@ public class Coins : MonoBehaviour {
     public Text coinText;
 	// Use this for initialization
 	void Update () {
-        coinText.text = CloudVariables.Coins.ToString () ?? "0";
+        coinText.text = CloudVariables.Coins.ToString ();
 	}
-	
+
+    void Awake()
+    {
+        coinText.text = CloudVariables.Coins.ToString() ?? "0";
+    }
+
 
 }

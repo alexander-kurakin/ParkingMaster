@@ -1103,7 +1103,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Perfect '
+  m_Text: Parking Master
 --- !u!222 &284257051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4900,6 +4900,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 2053965457}
+  isSaving: 0
+  isCloudDataLoaded: 0
+  isSaving2: 0
+  isCloudDataLoaded2: 0
 --- !u!4 &1485909545
 Transform:
   m_ObjectHideFlags: 0
@@ -6458,7 +6462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stop
+  m_Text: goes back
 --- !u!222 &2071693552
 CanvasRenderer:
   m_ObjectHideFlags: 0
