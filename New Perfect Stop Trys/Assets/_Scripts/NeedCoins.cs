@@ -10,7 +10,7 @@ public class NeedCoins : MonoBehaviour {
 	void Start () {
 		if (CloudVariables.Coins >= 100) {
 			transform.GetChild (0).gameObject.SetActive (false);
-            needMore.text = "You are damn rich! You have " + CloudVariables.Coins.ToString();
+            needMore.text = "You are rich! You have " + CloudVariables.Coins.ToString() + " and able to buy " + CloudVariables.Coins/100 + " cars";
         } else {
 			transform.GetChild (1).gameObject.SetActive (true);
 			transform.GetChild (0).gameObject.SetActive (true);

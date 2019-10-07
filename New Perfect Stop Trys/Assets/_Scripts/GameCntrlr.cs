@@ -31,11 +31,8 @@ public class GameCntrlr : MonoBehaviour {
 		inTurn = false;
 		Application.targetFrameRate = 60;
 
-        Debug.Log(CloudVariables.Coins.ToString());
-        Debug.Log(PlayerPrefs.GetString("Coins"));
-
-        bestScore.text = "BEST: "+ CloudVariables.HighScore.ToString();
-        coins.text = CloudVariables.Coins.ToString();
+        bestScore.text = "BEST: "+ CloudVariables.HighScore.ToString() ?? "0";
+        coins.text = CloudVariables.Coins.ToString() ?? "0";
 
 		for (int i = 0; i < car.Length; i++) {
 			if (car[i].name == PlayerPrefs.GetString ("Current car")){
@@ -136,10 +133,10 @@ public class GameCntrlr : MonoBehaviour {
 			if (CloudVariables.HighScore < countCars){
                 CloudVariables.HighScore = countCars;
                 bestScore.text = "Best: " + CloudVariables.HighScore.ToString();
-                LoginGoogle.Instance.SaveData();
+                //LoginGoogle.Instance.SaveData();
 			}
 
-            if (countCars == 1)
+ /*           if (countCars == 1)
                 {
                  if (Social.localUser.authenticated)
                  {
@@ -190,6 +187,7 @@ public class GameCntrlr : MonoBehaviour {
                         });
                 }
             }
+*/
 
             if (countCars >= 5 && countCars % 5 == 0)
             {
@@ -206,7 +204,7 @@ public class GameCntrlr : MonoBehaviour {
                 coins.text = CloudVariables.Coins.ToString();
 				if (PlayerPrefs.GetString ("Music") != "off") 
 					Instantiate (collectCoin, new Vector3 (0, 0, 0), Quaternion.identity);
-                LoginGoogle.Instance.SaveData2();
+                //LoginGoogle.Instance.SaveData2();
 
             }
 

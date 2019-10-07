@@ -24,9 +24,6 @@ public class DragCars : MonoBehaviour {
 		lockedYPos = screenPoint.x;
 		offset = cars.transform.position - Camera.main.ScreenToWorldPoint (new Vector3(Input.mousePosition.x,Input.mousePosition.y,screenPoint.z));
 		Cursor.visible = false;
-        Debug.Log(screenPoint.x);
-        Debug.Log(screenPoint.y);
-        Debug.Log(screenPoint.z);
     }
 
 	void OnMouseDrag(){

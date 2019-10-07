@@ -21,7 +21,7 @@ public class BuyCar : MonoBehaviour {
             CloudVariables.Coins = CloudVariables.Coins - 100;
             GameObject.Find (carName.text).GetComponent<Animation> ().Play ();
             coins.text = CloudVariables.Coins.ToString();
-            LoginGoogle.Instance.SaveData2();
+            //LoginGoogle.Instance.SaveData2();
             if (PlayerPrefs.GetString ("Music") != "off") {
 				Instantiate (buyCarAudio, new Vector3 (0, 0, 0), Quaternion.identity);
 			}
