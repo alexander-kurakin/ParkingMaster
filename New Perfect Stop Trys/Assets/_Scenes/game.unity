@@ -2886,8 +2886,8 @@ RectTransform:
   m_Father: {fileID: 961833353}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2566667, y: 0.156}
-  m_AnchorMax: {x: 0.75000006, y: 0.7323778}
+  m_AnchorMin: {x: 0.32666668, y: 0.156}
+  m_AnchorMax: {x: 0.65333337, y: 0.80600005}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2922,9 +2922,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap anywhere to park. Pay attention to your speed and time your button press.
-    Every 3rd stop grants you a coin! Every 5th stop raises your multiplier. And don't
-    forget to get those juicy extra random coins.
+  m_Text: "Tap anywhere to park. \nPay attention to your speed and time your button
+    presses.\nEvery 3rd stop grants you a coin! \nEvery 5th stop raises your multiplier.
+    \nAnd don't forget to get those juicy extra random coins.\nGood luck."
 --- !u!222 &1876748757
 CanvasRenderer:
   m_ObjectHideFlags: 0
