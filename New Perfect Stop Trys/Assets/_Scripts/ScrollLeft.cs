@@ -11,7 +11,7 @@ public class ScrollLeft : MonoBehaviour {
 		}
 
 		// Update is called once per frame
-		void Update () {
+		void FixedUpdate () {
 
 			if (rec.offsetMin.x != 0) {
 				rec.offsetMin += new Vector2 (speed, rec.offsetMin.y);

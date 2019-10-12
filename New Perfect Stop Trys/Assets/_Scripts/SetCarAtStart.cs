@@ -10,7 +10,8 @@ public class SetCarAtStart : MonoBehaviour {
 		if (PlayerPrefs.GetString("Current car") ==""){
 			PlayerPrefs.SetString ("Current car", "Pizza car");
 			PlayerPrefs.SetString ("Pizza car", "Unlocked");
-														}
+            PlayerPrefs.SetInt("CarLength", 5);
+        }
 		}
 
 	void Start(){

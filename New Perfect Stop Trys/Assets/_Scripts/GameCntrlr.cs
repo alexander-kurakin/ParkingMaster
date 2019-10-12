@@ -30,6 +30,8 @@ public class GameCntrlr : MonoBehaviour {
 		inTurn = false;
 		Application.targetFrameRate = 60;
 
+        multiplier = 1;
+
         bestScore.text = "BEST: "+ CloudVariables.HighScore.ToString() ?? "0";
         coins.text = CloudVariables.Coins.ToString() ?? "0";
 
@@ -52,7 +54,7 @@ public class GameCntrlr : MonoBehaviour {
 
 		}
 
-		if (stop && !PlayerLose.lose && !CreateBorder.blink_destroyed) {
+		if (stop && !PlayerLose.lose && !CreateBorder.blink_destroyed && CreateBorder.blink_created) {
 			inTurn = true;
 
             //подкрутка
@@ -76,7 +78,7 @@ public class GameCntrlr : MonoBehaviour {
 			StopRotate ();
 	}
       
-		if (CheckClick.click && !addStop) {
+		if (CheckClick.click && !addStop && !CarBehaviour.restrictStops) {
 			addStop = true;
 			stop = true;
 			Instantiate (brakes, new Vector3 (carInst.transform.position.x-8f, 8.2f, carInst.transform.position.z+3f), Quaternion.Euler (0, 0, 0));
@@ -86,7 +88,7 @@ public class GameCntrlr : MonoBehaviour {
 
     void OnMouseDown() {
 
-		if (!PlayerLose.lose)
+		if (!PlayerLose.lose && !CarBehaviour.restrictStops)
         {
 			print("Key pressed!");
             stop = true;
@@ -191,7 +193,7 @@ public class GameCntrlr : MonoBehaviour {
             if (countCars >= 5 && countCars % 5 == 0)
             {
                 if (multiplier <= 8)
-                    multiplier = multiplier * 2;
+                    multiplier *= 2;
                 else
                 {
                     multiplier = 16;

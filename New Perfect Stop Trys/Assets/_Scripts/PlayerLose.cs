@@ -20,8 +20,6 @@ public class PlayerLose : MonoBehaviour {
 			GameObject exp = Instantiate(explosion, new Vector3 (pos.x, 2.82f, pos.z), Quaternion.Euler(41,90,0)) as GameObject;
 			Destroy (exp, 1.5f);
 
-            GameCntrlr.multiplier = 1;
-
 			if ((PlayerPrefs.GetString ("Music") != "off")&&(gameObject.GetComponent<AudioSource>())) {
 				GetComponent<AudioSource> ().Play ();
 			}

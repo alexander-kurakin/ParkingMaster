@@ -6,9 +6,9 @@ public class NowCar : MonoBehaviour {
 
 	public Sprite thisOne, selectCar;
 	public Text carName;
-	public GameObject openCar, buyCar;
+	public GameObject openCar, buyCar, left, right;
 	public static bool inCollision;
-
+    
 	private bool firstCar;
 
 	void OnTriggerEnter (Collider other){
@@ -16,13 +16,15 @@ public class NowCar : MonoBehaviour {
 		print ("Music " + PlayerPrefs.GetString ("Music"));
 		if (other.tag == "Car") {
 
-			if (PlayerPrefs.GetString ("Music") != "off"&&firstCar)
+			if (PlayerPrefs.GetString ("Music") != "off" && firstCar)
 				GetComponent<AudioSource> ().Play();
 
 			firstCar = true;
 
 			other.transform.localScale += new Vector3 (0.2f, 0.2f, 0.2f);
-			carName.text = other.name;
+
+            carName.text = other.name;
+
 			if (PlayerPrefs.GetString (other.name) == "Unlocked") {
 				openCar.SetActive (true);
 				buyCar.SetActive (false);
@@ -41,7 +43,7 @@ public class NowCar : MonoBehaviour {
 	void OnTriggerExit (Collider other){
 		if (other.tag == "Car") {
 			other.transform.localScale -= new Vector3 (0.2f, 0.2f, 0.2f);
-		}
+        }
 	}
 
 }

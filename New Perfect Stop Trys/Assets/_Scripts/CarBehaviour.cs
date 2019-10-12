@@ -5,22 +5,32 @@ public class CarBehaviour : MonoBehaviour {
 
     public float speed = 10f;
 	public bool onPlace;
+    public static bool restrictStops;
     public Color passedColor;
 	private Rigidbody rb;
+    private int passedCount;
 
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
 	}
 
     void Update() {
+
         if (!onPlace)
         {
+            //куда двигаем, при изначальной загрузке тачки
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(20f, 0, -9.9f), speed * Time.deltaTime);
             CheckClick.click = false;
+            restrictStops = true;
         }
+
         if (transform.position.x == 20f)
+        {
             onPlace = true;
-	}
+            restrictStops = false;
+        }
+
+    }
 
 	void FixedUpdate(){
 		float moveHor = Input.GetAxis("Vertical");
@@ -31,13 +41,20 @@ public class CarBehaviour : MonoBehaviour {
         CheckClick.click = false;
     }
 
-    /*void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other) {
         if (other.tag == "Passed") {
-            PlayerLose.lose = true;
-            CheckClick.click = true;
+            passedCount++;
             other.GetComponent<Renderer>().material.color = passedColor;
-			print ("Car passed, lose!");
-			MoveObjects.speed = 0;
+
+            if ((PlayerPrefs.GetString("Music") != "off") && (other.GetComponent<AudioSource>()))
+            {
+                other.GetComponent<AudioSource>().Play();
+            }
+
+            if (passedCount % 5 == 0 && !(GameCntrlr.multiplier == 1))
+            {
+                GameCntrlr.multiplier /= 2;
+            }
         }
-    }*/
+    }
 }

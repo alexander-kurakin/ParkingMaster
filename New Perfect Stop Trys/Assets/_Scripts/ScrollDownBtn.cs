@@ -11,9 +11,9 @@ public class ScrollDownBtn : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
-		if (rec.offsetMin.y != 0) {
+		if (rec.offsetMin.y < 0) {
 			rec.offsetMin += new Vector2 (rec.offsetMin.x, speed);
 			rec.offsetMax += new Vector2 (rec.offsetMax.x, speed);
 		}

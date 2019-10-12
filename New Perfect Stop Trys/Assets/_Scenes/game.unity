@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 129723323}
   - component: {fileID: 129723325}
   - component: {fileID: 129723326}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +355,7 @@ GameObject:
   - component: {fileID: 189252503}
   - component: {fileID: 189252505}
   - component: {fileID: 189252506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: NeedCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 334316785}
   - component: {fileID: 334316787}
   - component: {fileID: 334316786}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Best score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 573510163}
   - component: {fileID: 573510165}
   - component: {fileID: 573510164}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: NeedCoins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.21666667, y: 0.2193106}
   m_AnchorMax: {x: 0.5966667, y: 0.83333355}
-  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &573510164
@@ -667,7 +667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -130}
+  m_AnchoredPosition: {x: 0, y: -129.99998}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574844520
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 626402326}
   - component: {fileID: 626402325}
   - component: {fileID: 626402324}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +901,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d834da361ac718f40a50b9b24eff160b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.07
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 850387956}
   - component: {fileID: 850387958}
   - component: {fileID: 850387957}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 961833351}
   - component: {fileID: 961833350}
   - component: {fileID: 961833354}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1421,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: -1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 1168373654}
   - component: {fileID: 1168373656}
   - component: {fileID: 1168373655}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Coins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1547,7 +1547,7 @@ GameObject:
   - component: {fileID: 1190921098}
   - component: {fileID: 1190921100}
   - component: {fileID: 1190921099}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1570,7 +1570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.28, y: 0.23743628}
   m_AnchorMax: {x: 0.74, y: 0.8434363}
-  m_AnchoredPosition: {x: -0.19999981, y: -0.30000114}
+  m_AnchoredPosition: {x: -0.20000076, y: -0.30000114}
   m_SizeDelta: {x: 8, y: 0.10000038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190921099
@@ -1621,7 +1621,7 @@ GameObject:
   - component: {fileID: 1231949974}
   - component: {fileID: 1231949973}
   - component: {fileID: 1231949972}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1715,7 +1715,7 @@ GameObject:
   - component: {fileID: 1256375676}
   - component: {fileID: 1256375678}
   - component: {fileID: 1256375679}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1819,7 @@ GameObject:
   - component: {fileID: 1279065956}
   - component: {fileID: 1279065958}
   - component: {fileID: 1279065957}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Share
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2107,7 +2107,7 @@ GameObject:
   - component: {fileID: 1370669687}
   - component: {fileID: 1370669689}
   - component: {fileID: 1370669690}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Share
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2666,7 +2666,7 @@ GameObject:
   - component: {fileID: 1657000373}
   - component: {fileID: 1657000372}
   - component: {fileID: 1657000374}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2689,7 +2689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0066666673, y: 0.52231294}
   m_AnchorMax: {x: 0.15333335, y: 0.64862585}
-  m_AnchoredPosition: {x: 1.6000061, y: 0}
+  m_AnchoredPosition: {x: 1.5999756, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657000372
@@ -2758,7 +2758,7 @@ GameObject:
   - component: {fileID: 1783106780}
   - component: {fileID: 1783106782}
   - component: {fileID: 1783106781}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2827,7 +2827,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1794413645}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: NeedMore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2865,7 +2865,8 @@ GameObject:
   - component: {fileID: 1876748757}
   - component: {fileID: 1876748756}
   - component: {fileID: 1876748758}
-  m_Layer: 5
+  - component: {fileID: 1876748760}
+  m_Layer: 0
   m_Name: Study
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2886,8 +2887,8 @@ RectTransform:
   m_Father: {fileID: 961833353}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.32666668, y: 0.156}
-  m_AnchorMax: {x: 0.65333337, y: 0.80600005}
+  m_AnchorMin: {x: 0.68666667, y: 0.156}
+  m_AnchorMax: {x: 0.9766667, y: 0.80600005}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2911,20 +2912,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 7b05906432585ee42afdc5ba93313117, type: 3}
-    m_FontSize: 14
+    m_FontSize: 6
     m_FontStyle: 0
-    m_BestFit: 1
-    m_MinSize: 6
+    m_BestFit: 0
+    m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tap anywhere to park. \nPay attention to your speed and time your button
-    presses.\nEvery 3rd stop grants you a coin! \nEvery 5th stop raises your multiplier.
-    \nAnd don't forget to get those juicy extra random coins.\nGood luck."
+  m_Text: "Tap anywhere to park. \nTime your button presses and pay attention to the
+    current speed.\nEvery 3rd stop grants you a coin! \nEvery 5th stop raises your
+    multiplier. \nHowever, missing 5 stops in a row lower your multiplier."
 --- !u!222 &1876748757
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2945,6 +2946,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7607c83f2ae0d5340bdcc119a1a40c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1876748760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876748754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 0.5, y: 0.7}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1985828206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2988,7 +3004,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: dc6f6292e3b930a478659a9470f716f9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3256,7 +3272,7 @@ GameObject:
   - component: {fileID: 2053965458}
   - component: {fileID: 2053965457}
   - component: {fileID: 2053965459}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
