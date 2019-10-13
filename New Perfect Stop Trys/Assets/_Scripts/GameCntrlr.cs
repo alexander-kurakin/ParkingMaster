@@ -10,7 +10,7 @@ public class GameCntrlr : MonoBehaviour {
 	private bool addStop;
     public static int multiplier = 1;
 
-	public GameObject collectCoin;
+	public GameObject collectCoin, multUp;
 	public Text score, bestScore, coins;
     public float stopObj = MoveObjects.speed/3;
 	public GameObject[] car;
@@ -193,7 +193,12 @@ public class GameCntrlr : MonoBehaviour {
             if (countCars >= 5 && countCars % 5 == 0)
             {
                 if (multiplier <= 8)
+                {
+                    if (PlayerPrefs.GetString("Music") != "off")
+                        Instantiate(multUp, new Vector3(0, 0, 0), Quaternion.identity);
+
                     multiplier *= 2;
+                }
                 else
                 {
                     multiplier = 16;
@@ -213,7 +218,6 @@ public class GameCntrlr : MonoBehaviour {
 			MoveObjects.speed = Random.Range (25f, 44f);
 			CreateBorder.blink.GetComponent<MeshRenderer> ().sharedMaterial.color = winColor;
         }
-        CreateBorder.blink.GetComponent<MeshRenderer> ().sharedMaterial.color = winColor;
     }
 
     IEnumerator SetToBorder(float zPos) {

@@ -9,6 +9,7 @@ public class CarBehaviour : MonoBehaviour {
     public Color passedColor;
 	private Rigidbody rb;
     private int passedCount;
+    public GameObject multDown;
 
 	void Start(){
 		rb = GetComponent<Rigidbody> ();
@@ -54,6 +55,8 @@ public class CarBehaviour : MonoBehaviour {
             if (passedCount % 5 == 0 && !(GameCntrlr.multiplier == 1))
             {
                 GameCntrlr.multiplier /= 2;
+                if (PlayerPrefs.GetString("Music") != "off")
+                    Instantiate(multDown, new Vector3(0, 0, 0), Quaternion.identity);
             }
         }
     }
